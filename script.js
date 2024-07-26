@@ -1,7 +1,7 @@
-const res = document.getElementById("result")
-const inputs = document.getElementById("rope-lengths")
-
 function calculateMinCost() {
+    const inputs = document.getElementById("rope-lengths");
+    const res = document.getElementById("result");
+    
     let values = inputs.value.split(",").map(Number);
     let totalCost = 0;
 
