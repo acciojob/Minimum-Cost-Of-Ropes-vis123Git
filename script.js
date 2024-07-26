@@ -1,22 +1,27 @@
 const res = document.getElementById("result")
 const inputs = document.getElementById("rope-lengths")
 
-function calculateMinCost(args) {
-	const values = inputs.value.split(",").map(Number).sort((a,b)=>a-b); 
-	for (let [index,key] of values.entries()) {
-		const el  = values[0]+values[1];
-		console.log("el----", el, "values===", values)
-		   values.splice(0,2);
-		values.push(el)
-		values.sort((a,b)=> a-b)
-		
+function calculateMinCost() {
+    let values = inputs.value.split(",").map(Number);
+    let totalCost = 0;
 
-		console.log("key, index===",key, index)
-	}
+    while (values.length > 1) {
+        // Sort the array
+        values.sort((a, b) => a - b);
 
-	console.log("args===", inputs.value, values.length)
-  res.innerText =  values[0]+values[1];
-  
-  
-  
-}  
+        // Take the two smallest ropes
+        let first = values.shift();
+        let second = values.shift();
+
+        // Calculate the cost of connecting these ropes
+        let cost = first + second;
+
+        // Add to the total cost
+        totalCost += cost;
+
+        // Put the new rope back into the array
+        values.push(cost);
+    }
+
+    res.innerText = totalCost;
+}
