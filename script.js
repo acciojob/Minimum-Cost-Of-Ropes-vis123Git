@@ -25,3 +25,4 @@ function calculateMinCost() {
 
     res.innerText = totalCost;
 }
+    document.getElementById("calculate-btn").addEventListener("click", calculateMinCost);
