@@ -23,6 +23,6 @@ function calculateMinCost() {
         values.push(cost);
     }
 
-    res.innerHTML = totalCost;
+    res.innerText = totalCost;
 }
     document.getElementById("calculate-btn").addEventListener("click", calculateMinCost);
