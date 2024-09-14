@@ -1,10 +1,19 @@
 function calculateMinCost() {
     const inputs = document.getElementById("rope-lengths");
     const res = document.getElementById("result");
-    
-    let values = inputs.value.split(",").map(Number);
+
+    // Retrieve and parse input values
+    let values = inputs.value.split(",").map(str => parseInt(str.trim(), 10));
+
+    // Validate input
+    if (values.some(isNaN) || values.length === 0) {
+        res.innerText = 'Invalid input';
+        return;
+    }
+
     let totalCost = 0;
 
+    // Calculate minimum cost using a greedy approach
     while (values.length > 1) {
         // Sort the array
         values.sort((a, b) => a - b);
@@ -23,6 +32,9 @@ function calculateMinCost() {
         values.push(cost);
     }
 
+    // Update result
     res.innerText = totalCost;
 }
-    document.getElementById("calculate-btn").addEventListener("click", calculateMinCost);
+
+// Attach the event listener to the button
+document.getElementById("calculate-btn").addEventListener("click", calculateMinCost);
